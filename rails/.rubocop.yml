@@ -1,0 +1,21 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  # 除外するディレクトリ（自動生成されたファイル）
+  # デフォルト設定にある"vendor/**/*"が無効化されないように記述
+  Exclude:
+    - 'bin/*'
+    - 'lib/*'
+    - 'node_modules/**/*'
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'test/**'
+  # Rails向けのRails copsを実行。"rubocop -R"と同じ
+  Rails:
+    enabled: true
+
+# "Missing top-level class documentation comment."を無効
+Style/Documentation:
+  Enabled: false
