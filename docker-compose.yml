@@ -1,31 +1,31 @@
 version: '3.8'
 
 services:
-  # mysql:
-  #   image: mysql:8.0
-  #   command: --default-authentication-plugin=mysql_native_password
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-  #   ports:
-  #     - ${MYSQL_HOST_PORT}:3306
+  mysql:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - ${MYSQL_HOST_PORT}:3306
 
-  # rails:
-  #   build:
-  #     context: ./rails
-  #     dockerfile: .
-  #   platform: linux/x86_64
-  #   command: bash -c "rm -f tmp/pids/server.pid && bin/dev"
-  #   stdin_open: true
-  #   tty: true
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-  #   volumes:
-  #     - ./rails:/home/app/incubation-match
-  #     - bundle:/home/app/incubation-match/vendor/bundle
-  #   ports:
-  #     - ${RAILS_HOST_PORT}:3000
-  #   depends_on:
-  #     - mysql
+  rails:
+    build:
+      context: ./rails
+      dockerfile: ./docker/Dockerfile
+    platform: linux/x86_64
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0"
+    stdin_open: true
+    tty: true
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ./rails:/home/app/stay-in-shimane
+      - bundle:/home/app/stay-in-shimane/vendor/bundle
+    ports:
+      - ${RAILS_HOST_PORT}:3000
+    depends_on:
+      - mysql
 
   react:
     build:
@@ -40,9 +40,9 @@ services:
     ports:
       - ${REACT_HOST_PORT}:3000
       - 6006:6006
-    # depends_on:
-    #   - rails
+    depends_on:
+      - rails
 
 volumes:
-  # bundle:
+  bundle:
   node_modules:
