@@ -11,7 +11,7 @@ export const Router: React.FC = () => {
       <Route path="/rooms/:room_id" element={<RoomsShow />} />
       <Route path="/host/rooms" element={<HostRoomsIndex />} />
       <Route path="/host/rooms/:room_id/edit" element={<HostRoomsEdit />} />
-      <Route path="/host/rooms/:room_id/new" element={<HostRoomsNew />} />
+      <Route path="/host/rooms/new" element={<HostRoomsNew />} />
       <Route path="user" element={<UserEdit />} />
       <Route path="*" element={<>404</>} />
       <Route path="status" element={<Status />} />
