@@ -1,5 +1,7 @@
 export const Status: React.FC = () => {
   return (
-    <>ステータス確認</>
+    <>
+      <p>ステータス確認</p>
+    </>
   )
 }

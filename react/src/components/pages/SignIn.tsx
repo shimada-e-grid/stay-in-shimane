@@ -1,5 +1,10 @@
+import { Button } from '../'
+
 export const SignIn: React.FC = () => {
   return (
-    <>ログイン</>
+    <>
+      <p>ログイン</p>
+      <Button></Button>
+    </>
   )
 }

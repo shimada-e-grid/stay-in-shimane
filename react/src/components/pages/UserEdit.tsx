@@ -1,5 +1,10 @@
+import { Button } from '../'
+
 export const UserEdit: React.FC = () => {
   return (
-    <>トップ</>
+    <>
+      <p>アカウント編集</p>
+      <Button></Button>
+    </>
   )
 }
