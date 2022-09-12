@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_12_011931) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_12_015810) do
+  create_table "rooms", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false, comment: "ユーザーID"
+    t.string "name", null: false, comment: "物件名"
+    t.string "name_kana", null: false, comment: "物件名_かな"
+    t.string "zip_code", null: false, comment: "物件_郵便番号"
+    t.integer "prefecture", null: false, comment: "物件_都道府県"
+    t.string "city", null: false, comment: "物件_市区町村"
+    t.string "address1", null: false, comment: "物件_町名番地"
+    t.string "address2", comment: "物件_建物・部屋番号・その他"
+    t.integer "maximum_capacity", null: false, comment: "最大人数"
+    t.integer "price", null: false, comment: "値段"
+    t.text "description", comment: "説明"
+    t.boolean "is_public", default: false, null: false, comment: "公開フラグ"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_rooms_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "display_name", comment: "アカウント名"
     t.string "display_image", comment: "アカウント画像"
@@ -48,4 +66,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_011931) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "rooms", "users"
 end
