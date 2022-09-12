@@ -5,7 +5,8 @@ module Api
 
       # GET /rooms
       def index
-        @rooms = Room.all
+        @rooms = Room.where(room_search_params['prefectrue'])
+        # @rooms = Room.where('name like %?%', room_search_params['name'])
 
         render json: @rooms
       end
@@ -48,7 +49,11 @@ module Api
 
         # Only allow a list of trusted parameters through.
         def room_params
-          params.require(:room).permit(:user_id, :name, :name_kana, :zip_code, :prefecture, :city, :address1, :address2)
+          params.require(:room).permit(:user_id, :name, :name_kana, :zip_code, :prefecture, :city, :address1, :address2, :maximum_capacity, :price, :description, :is_public)
+        end
+
+        def room_search_params
+          params.fetch(:search, {}).permit(:name, :prefecture)
         end
     end
   end
