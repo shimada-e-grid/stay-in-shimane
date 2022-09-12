@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_015810) do
     t.string "last_name", null: false, comment: "名字"
     t.string "first_name", null: false, comment: "名前"
     t.string "tel", null: false, comment: "電話番号"
-    t.string "date_of_birth", null: false, comment: "生年月日"
+    t.date "date_of_birth", null: false, comment: "生年月日"
     t.integer "gender", comment: "性別"
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
