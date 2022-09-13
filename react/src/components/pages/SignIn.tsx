@@ -1,14 +1,13 @@
+import { useNavigate } from 'react-router-dom'
 import { SimpleButton } from '../'
 
-const handleOnClick = () => {
-  window.location.href = '/host/rooms'
-}
-
 export const SignIn: React.FC = () => {
+  const navigate = useNavigate()
+
   return (
     <>
       <p>ログイン</p>
-      <SimpleButton onClick={handleOnClick}>ログイン</SimpleButton>
+      <SimpleButton onClick={() => navigate('/host/rooms')}>ログイン</SimpleButton>
     </>
   )
 }

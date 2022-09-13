@@ -1,18 +1,14 @@
+import { useNavigate } from 'react-router-dom'
 import { SimpleButton } from '../'
 
-const handleOnClickIndex = () => {
-  window.location.href = '/rooms'
-}
-const handleOnClickSignIn = () => {
-  window.location.href = 'auth/sign_in'
-}
-
 export const Top: React.FC = () => {
+  const navigate = useNavigate()
+
   return (
     <>
       <p>トップ</p>
-      <SimpleButton onClick={handleOnClickIndex}>物件一覧</SimpleButton>
-      <SimpleButton onClick={handleOnClickSignIn}>サインイン</SimpleButton>
+      <SimpleButton onClick={() => navigate('/rooms?search[prefecture]=32')}>物件一覧</SimpleButton>
+      <SimpleButton onClick={() => navigate('/auth/sign_in')}>サインイン</SimpleButton>
     </>
   )
 }

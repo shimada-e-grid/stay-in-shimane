@@ -1,13 +1,8 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import { SimpleButton, TextField } from '../'
 import useAxios from '../../hooks/useAxios'
-
-const handleOnClickShow = () => {
-  window.location.href = '/rooms/1'
-}
-const handleOnClickTop = () => {
-  window.location.href = '/'
-}
 
 interface RoomResponse {
   id: number
@@ -21,6 +16,7 @@ export const RoomsIndex: React.FC = () => {
     method: 'get'
   });
 
+  const navigate = useNavigate()
   const handleOnClickSearch = () => {
     fetch({
       params: {
@@ -32,8 +28,8 @@ export const RoomsIndex: React.FC = () => {
   return (
     <>
       <p>物件一覧</p>
-      <SimpleButton onClick={handleOnClickShow} className="px-1">物件詳細</SimpleButton>
-      <SimpleButton onClick={handleOnClickTop}>トップ</SimpleButton>
+      <SimpleButton onClick={() => navigate('/rooms/1')}>物件詳細</SimpleButton>
+      <SimpleButton onClick={() => navigate('/')}>トップ</SimpleButton>
       <TextField value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
       <SimpleButton onClick={handleOnClickSearch}>検索</SimpleButton>
       { loading && <>ローディング</> }

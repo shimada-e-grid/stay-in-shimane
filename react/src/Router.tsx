@@ -12,9 +12,9 @@ export const Router: React.FC = () => {
       <Route path="/host/rooms" element={<HostRoomsIndex />} />
       <Route path="/host/rooms/:room_id/edit" element={<HostRoomsEdit />} />
       <Route path="/host/rooms/new" element={<HostRoomsNew />} />
-      <Route path="user" element={<UserEdit />} />
+      <Route path="/user" element={<UserEdit />} />
+      <Route path="/status" element={<Status />} />
       <Route path="*" element={<>404</>} />
-      <Route path="status" element={<Status />} />
     </Routes>
   );
 };
