@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, TextField } from '../'
+import { SimpleButton, TextField } from '../'
 import useAxios from '../../hooks/useAxios'
 
 const handleOnClickShow = () => {
@@ -32,10 +32,10 @@ export const RoomsIndex: React.FC = () => {
   return (
     <>
       <p>物件一覧</p>
-      <Button onClick={handleOnClickShow}>物件詳細</Button>
-      <Button onClick={handleOnClickTop}>トップ</Button>
+      <SimpleButton onClick={handleOnClickShow} className="px-1">物件詳細</SimpleButton>
+      <SimpleButton onClick={handleOnClickTop}>トップ</SimpleButton>
       <TextField value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
-      <Button onClick={handleOnClickSearch}>検索</Button>
+      <SimpleButton onClick={handleOnClickSearch}>検索</SimpleButton>
       { loading && <>ローディング</> }
       { data && data.map(room => {
         return <p key={room.id}>{room.name}</p>

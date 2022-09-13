@@ -1,4 +1,4 @@
-import { Button } from '../'
+import { SimpleButton } from '../'
 
 const handleOnClickIndex = () => {
   window.location.href = '/rooms'
@@ -11,8 +11,8 @@ export const Top: React.FC = () => {
   return (
     <>
       <p>トップ</p>
-      <Button onClick={handleOnClickIndex}>物件一覧</Button>
-      <Button onClick={handleOnClickSignIn}>サインイン</Button>
+      <SimpleButton onClick={handleOnClickIndex}>物件一覧</SimpleButton>
+      <SimpleButton onClick={handleOnClickSignIn}>サインイン</SimpleButton>
     </>
   )
 }
