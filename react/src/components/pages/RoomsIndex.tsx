@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { SimpleButton, TextField } from '../'
 import useAxios from '../../hooks/useAxios'
+import { ApartmentCard } from '../organisms/ApartmentCard'
 
 interface RoomResponse {
   id: number
@@ -33,9 +34,10 @@ export const RoomsIndex: React.FC = () => {
       <TextField value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
       <SimpleButton onClick={handleOnClickSearch}>検索</SimpleButton>
       { loading && <>ローディング</> }
-      { data && data.map(room => {
-        return <p key={room.id}>{room.name}</p>
-      }) }
+      { data && data.map(room =>
+        // TODO
+        <ApartmentCard name={room.name} price={10000} address="島根県・・・"/>
+        ) }
     </>
   )
 }
