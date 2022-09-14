@@ -5,9 +5,15 @@ module Api
 
       # GET /rooms
       def index
-        @rooms = Room.where(room_search_params['prefectrue'])
-        # @rooms = Room.where('name like %?%', room_search_params['name'])
-
+        @rooms = Room.all
+        
+        if room_search_params['prefecture'].present?
+          @rooms = @rooms.where(prefecture: room_search_params['prefecture'])
+        end
+        if room_search_params['name'].present?
+          @rooms = @rooms.where('name like ?', "%#{room_search_params['name']}%")
+        end
+         
         render json: @rooms
       end
 
