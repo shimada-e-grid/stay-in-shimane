@@ -1,7 +1,7 @@
 FROM ruby:3.1.2-slim
 
 ENV LANG ja_JP.UTF-8 \
-  TZ Asia/Tokyo \
+  TZ Asia/Tokyo
 
 WORKDIR /home/app/stay-in-shimane
 
