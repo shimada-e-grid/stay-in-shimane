@@ -43,4 +43,18 @@ user.rooms.new({
   description: 'ここは○○で...'
 })
 
+user.rooms.new({
+  name: 'テスト物件３',
+  name_kana: 'てすとぶっけん３',
+  zip_code: '141-0031',
+  prefecture: 13,
+  city: '品川区',
+  address1: '西五反田8-1-2',
+  address2: '第2平森ビル4階',
+  maximum_capacity: 20,
+  price: 150000,
+  description: '昼ごはんには困りません'
+})
+
 user.save
+p 'テストデータを保存しました'
