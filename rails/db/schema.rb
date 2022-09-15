@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_12_015810) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_15_005458) do
+  create_table "room_calendars", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "room_id", null: false, comment: "物件ID"
+    t.string "type", comment: "カレンダータイプ"
+    t.date "target_date", null: false, comment: "対象日"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_room_calendars_on_room_id"
+  end
+
+  create_table "room_images", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "room_id", null: false, comment: "物件ID"
+    t.string "image_path", null: false, comment: "ファイルパス"
+    t.integer "display_order", comment: "表示順"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_room_images_on_room_id"
+  end
+
   create_table "rooms", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false, comment: "ユーザーID"
     t.string "name", null: false, comment: "物件名"
@@ -66,5 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_015810) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "room_calendars", "rooms"
+  add_foreign_key "room_images", "rooms"
   add_foreign_key "rooms", "users"
 end

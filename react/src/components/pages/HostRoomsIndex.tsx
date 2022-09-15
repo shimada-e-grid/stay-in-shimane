@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom'
 import { SimpleButton } from '../'
+import { useAuthUserContext } from "../../providers";
 
 export const HostRoomsIndex: React.FC = () => {
   const navigate = useNavigate()
+  const authUser = useAuthUserContext()
 
   return (
     <>
@@ -11,6 +13,9 @@ export const HostRoomsIndex: React.FC = () => {
       <SimpleButton onClick={() => navigate('/host/rooms/new')}>ホスト物件新規登録</SimpleButton>
       <SimpleButton onClick={() => navigate('/')}>トップ</SimpleButton>
       <SimpleButton onClick={() => navigate('/user')}>アカウント編集</SimpleButton>
+      <SimpleButton onClick={() => authUser.signOut(() => {
+        navigate('/')
+      })}>ログアウト</SimpleButton>
     </>
   )
 }

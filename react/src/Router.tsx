@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { HostRoomsEdit, HostRoomsIndex, HostRoomsNew, RoomsIndex, RoomsShow, SignIn, Status, Top, UserEdit} from './components/pages';
+import { RouteAuthGuard } from './components/templates/RouterAuthGuard';
+import { HostRoomsEdit, HostRoomsIndex, HostRoomsNew, RoomsIndex, RoomsShow, SignIn, Status, Top, UserEdit } from './components/pages';
 
 export const Router: React.FC = () => {
   return (
@@ -9,10 +10,10 @@ export const Router: React.FC = () => {
       <Route path="/auth/sign_in" element={<SignIn />} />
       <Route path="/rooms" element={<RoomsIndex />} />
       <Route path="/rooms/:room_id" element={<RoomsShow />} />
-      <Route path="/host/rooms" element={<HostRoomsIndex />} />
-      <Route path="/host/rooms/:room_id/edit" element={<HostRoomsEdit />} />
-      <Route path="/host/rooms/new" element={<HostRoomsNew />} />
-      <Route path="/user" element={<UserEdit />} />
+      <Route path="/host/rooms" element={<RouteAuthGuard component={<HostRoomsIndex />} redirect={'/auth/sign_in'} />} />
+      <Route path="/host/rooms/:room_id/edit" element={<RouteAuthGuard component={<HostRoomsEdit />} redirect={'/auth/sign_in'} />} />
+      <Route path="/host/rooms/new" element={<RouteAuthGuard component={<HostRoomsNew />} redirect={'/auth/sign_in'} />} />
+      <Route path="/user" element={<RouteAuthGuard component={<UserEdit />} redirect={'/auth/sign_in'} />} />
       <Route path="/status" element={<Status />} />
       <Route path="*" element={<>404</>} />
     </Routes>
