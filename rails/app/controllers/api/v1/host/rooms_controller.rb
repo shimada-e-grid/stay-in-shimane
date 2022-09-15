@@ -4,8 +4,8 @@ module Api
   module V1
     module Host
       class RoomsController < ApplicationController
-        before_action :set_user, only: %i[ index create ]
-        before_action :set_room, only: %i[ show update destroy ]
+        before_action :set_user, only: %i[index create]
+        before_action :set_room, only: %i[show update destroy]
 
         # GET /rooms
         def index

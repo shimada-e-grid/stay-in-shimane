@@ -8,5 +8,5 @@ class Room < ApplicationRecord
   has_many :holidays
   has_many :reserveds
 
-  validates :name, presence:true
+  validates :name, presence: true
 end
