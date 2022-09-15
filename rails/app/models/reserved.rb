@@ -1,3 +1,3 @@
 class Reserved < RoomCalendar
-    belongs_to :room
-  end
+  belongs_to :room
+end
