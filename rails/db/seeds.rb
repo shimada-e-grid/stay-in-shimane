@@ -15,7 +15,8 @@ user = User.new({
   gender: nil,
   uid: 'test1@example.com',
   email: 'test1@example.com',
-  password: 'password'
+  password: 'password',
+  confirmed_at: Time.now
 })
 
 @room1 = user.rooms.new({
