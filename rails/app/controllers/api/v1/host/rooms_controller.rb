@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     module Host
@@ -42,21 +44,23 @@ module Api
         end
 
         private
-          # Use callbacks to share common setup or constraints between actions.
-          def set_room
-            user = User.find(1)
-            @room = user.rooms.find(params[:id])
-          end
-          
-          def set_user
-            @user = User.find(1)
-          end
 
-          # Only allow a list of trusted parameters through.
-          def room_params
-            params.require(:room).permit(:user_id, :name, :name_kana, :zip_code, :prefecture, :city, :address1, :address2, :maximum_capacity, :price, :description, :is_public)
-          end
+        # Use callbacks to share common setup or constraints between actions.
+        def set_room
+          user = User.find(1)
+          @room = user.rooms.find(params[:id])
+        end
+
+        def set_user
+          @user = User.find(1)
+        end
+
+        # Only allow a list of trusted parameters through.
+        def room_params
+          params.require(:room).permit(:user_id, :name, :name_kana, :zip_code, :prefecture, :city, :address1,
+                                       :address2, :maximum_capacity, :price, :description, :is_public)
+        end
       end
-    end  
+    end
   end
 end
