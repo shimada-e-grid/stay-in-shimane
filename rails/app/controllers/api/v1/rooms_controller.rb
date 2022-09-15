@@ -1,19 +1,15 @@
 module Api
   module V1
     class RoomsController < ApplicationController
-      before_action :set_room, only: %i[ show update destroy ]
+      before_action :set_room, only: %i[show update destroy]
 
       # GET /rooms
       def index
         @rooms = Room.all
-        
-        if room_search_params['prefecture'].present?
-          @rooms = @rooms.where(prefecture: room_search_params['prefecture'])
-        end
-        if room_search_params['name'].present?
-          @rooms = @rooms.where('name like ?', "%#{room_search_params['name']}%")
-        end
-         
+
+        @rooms = @rooms.where(prefecture: room_search_params['prefecture']) if room_search_params['prefecture'].present?
+        @rooms = @rooms.where('name like ?', "%#{room_search_params['name']}%") if room_search_params['name'].present?
+
         render json: @rooms
       end
 
@@ -48,19 +44,21 @@ module Api
       end
 
       private
-        # Use callbacks to share common setup or constraints between actions.
-        def set_room
-          @room = Room.find(params[:id])
-        end
 
-        # Only allow a list of trusted parameters through.
-        def room_params
-          params.require(:room).permit(:user_id, :name, :name_kana, :zip_code, :prefecture, :city, :address1, :address2, :maximum_capacity, :price, :description, :is_public)
-        end
+      # Use callbacks to share common setup or constraints between actions.
+      def set_room
+        @room = Room.find(params[:id])
+      end
 
-        def room_search_params
-          params.fetch(:search, {}).permit(:name, :prefecture)
-        end
+      # Only allow a list of trusted parameters through.
+      def room_params
+        params.require(:room).permit(:user_id, :name, :name_kana, :zip_code, :prefecture, :city, :address1,
+                                     :address2, :maximum_capacity, :price, :description, :is_public)
+      end
+
+      def room_search_params
+        params.fetch(:search, {}).permit(:name, :prefecture)
+      end
     end
   end
 end
