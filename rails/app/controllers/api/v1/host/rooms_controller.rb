@@ -4,7 +4,7 @@ module Api
   module V1
     module Host
       class RoomsController < ApplicationController
-        before_action :set_user, only: %i[index]
+        before_action :set_user, only: %i[index create]
         before_action :set_room, only: %i[show update destroy]
 
         # GET /rooms
@@ -20,16 +20,16 @@ module Api
 
         # POST /rooms
         def create
-          @room = Room.new(room_params)
+          @room = @user.rooms.new(room_params)
 
           if @room.save
             render json: @room, status: :created, location: @room
           else
-            render json: @room.errors, status: :unprocessable_entity
+            render json: @room.errors.full_messages, status: :unprocessable_entity
           end
         end
 
-        # PATCH/PUT /rooms/1
+        # PATCH/PUT /host/rooms/1
         def update
           if @room.update(room_params)
             render json: @room

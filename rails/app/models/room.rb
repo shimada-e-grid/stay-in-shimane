@@ -7,4 +7,6 @@ class Room < ApplicationRecord
   has_many :room_calendars
   has_many :holidays
   has_many :reserveds
+
+  validates :name, presence: true
 end
