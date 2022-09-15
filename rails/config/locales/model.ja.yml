@@ -1,0 +1,26 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー 
+      room: 物件 
+    attributes:
+      room:
+        id: ID
+        user_id: ユーザーID
+        name: 物件名
+        name_kana: 物件名_かな
+        zip_code: 物件_郵便番号
+        prefecture: 物件_都道府県
+        city: 市区町村
+        address1: 町名番地
+        address2: 物件_建物・部屋番号・その他
+      user:
+        id: ID
+        email: メールアドレス
+        display_name: アカウント名
+        display_image: アカウント画像
+        first_name: 名字
+        last_name: 名前
+        tel: 電話番号
+        date_of_birth: 生年月日
+        gender: 性別
