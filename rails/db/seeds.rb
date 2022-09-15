@@ -18,7 +18,7 @@ user = User.new({
   password: 'password'
 })
 
-user.rooms.new({
+@room1 = user.rooms.new({
   name: 'テスト物件１',
   name_kana: 'てすとぶっけん１',
   zip_code: '000-0000',
@@ -31,7 +31,7 @@ user.rooms.new({
   description: 'ここは○○で...'
 })
 
-user.rooms.new({
+@room2 = user.rooms.new({
   name: 'テスト物件２',
   name_kana: 'てすとぶっけん２',
   zip_code: '000-0000',
@@ -43,7 +43,7 @@ user.rooms.new({
   description: 'ここは○○で...'
 })
 
-user.rooms.new({
+@room3 = user.rooms.new({
   name: 'テスト物件３',
   name_kana: 'てすとぶっけん３',
   zip_code: '141-0031',
@@ -54,6 +54,36 @@ user.rooms.new({
   maximum_capacity: 20,
   price: 150000,
   description: '昼ごはんには困りません'
+})
+
+@room1.holidays.new({
+  type: 'Holiday',
+  target_date: '2022-09-16'
+})
+
+@room1.reserveds.new({
+  type: 'Reserved',
+  target_date: '2022-09-16'
+})
+
+@room2.holidays.new({
+  type: 'Holiday',
+  target_date: '2022-09-16'
+})
+
+@room2.reserveds.new({
+  type: 'Reserved',
+  target_date: '2022-09-16'
+})
+
+@room3.holidays.new({
+  type: 'Holiday',
+  target_date: '2022-09-16'
+})
+
+@room3.reserveds.new({
+  type: 'Reserved',
+  target_date: '2022-09-16'
 })
 
 user.save
