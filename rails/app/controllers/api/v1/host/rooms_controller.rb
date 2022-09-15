@@ -34,7 +34,7 @@ module Api
           if @room.update(room_params)
             render json: @room
           else
-            render json: @room.errors, status: :unprocessable_entity
+            render json: @room.errors.full_messages, status: :unprocessable_entity
           end
         end
 
