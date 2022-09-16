@@ -1,5 +1,4 @@
-import * as $ from 'jquery'
-
+import $ from 'jquery';
 
 const japan_map: React.CSSProperties = {
   position: 'relative',
@@ -110,70 +109,53 @@ const div: React.CSSProperties = {
   cursor: 'pointer'
 }
 
+$(function(){
+  //地域を選択
+  $('.area_btn').click(function(){
+      $('.area_overlay').show();
+      $('.pref_area').show();
+      var area = $(this).data('area');
+      $('[data-list]').hide();
+      $('[data-list="' + area + '"]').show();
+  })
 
+  //レイヤーをタップ
+  $('.area_overlay').click(function(){
+    prefReset();
+  });
 
-// const constructor: (props) => {
-//   super(props);
-//   this.state = {isToggleOn: true};
+    //都道府県をクリック
+    $('.pref_list [data-id]').click(function(){
+      if($(this).data('id')){
+          var id = $(this).data('id');
+          //このidを使用して行いたい操作をしてください
+          //都道府県IDに応じて別ページに飛ばしたい場合はこんな風に書く↓
+          //window.location.href = 'https://kinocolog.com/pref/' + id;
+          
+          prefReset();
+      }
+  });
 
-//   // This binding is necessary to make `this` work in the callback
-//   this.handleClick = this.handleClick.bind(this);
-// }
-
-// const handleClick: () => {
-//   this.setState(prevState => ({
-//     isToggleOn: !prevState.isToggleOn
-//   }))
-// }
+  //表示リセット
+  function prefReset(){
+    $('[data-list]').hide();
+    $('.pref_area').hide();
+    $('.area_overlay').hide();
+  }
+}
+)
 
 export const SelectMap: React.FC = () => {
   return(
     <>
-      <script>
-        $(function(){
-            //地域を選択
-            $('.area_btn').click(function(){
-                $('.area_overlay').show();
-                $('.pref_area').show();
-                var area = $(this).data('area');
-                $('[data-list]').hide();
-                $('[data-list="' + area + '"]').show();
-            });
-            
-            //レイヤーをタップ
-            $('.area_overlay').click(function(){
-                prefReset();
-            });
-            
-            //都道府県をクリック
-            $('.pref_list [data-id]').click(function(){
-                if($(this).data('id')){
-                    var id = $(this).data('id');
-                    //このidを使用して行いたい操作をしてください
-                    //都道府県IDに応じて別ページに飛ばしたい場合はこんな風に書く↓
-                    //window.location.href = 'https://kinocolog.com/pref/' + id;
-                    
-                    prefReset();
-                }
-            });
-            
-            //表示リセット
-            function prefReset(){
-                $('[data-list]').hide();
-                $('.pref_area').hide();
-                $('.area_overlay').hide();
-            }
-        });
-      </script>
-
       <div className="japan_map" style={Object.assign(japan_map)}>
         <img src="./map_of_japan.png" alt="日本地図" style={japan_map_img}></img>
-        <span className="area_btn" style={Object.assign(area_btn, area1)} data-area="1">北海道・東北</span>
-        <span className="area_btn" style={Object.assign(area_btn, area2)} data-area="2">関東</span>
-        <span className="area_btn" style={Object.assign(area_btn, area3)} data-area="3">中部</span>
-        <span className="area_btn" style={Object.assign(area_btn, area4)} data-area="4">近畿</span>
-        <span className="area_btn" style={Object.assign(area_btn, area5)} data-area="5">中国・四国</span>
-        <span className="area_btn" style={Object.assign(area_btn, area6)} data-area="6">九州・沖縄</span>
+        <span className="area_btn" style={{...area_btn, ...area1}} data-area="1">北海道・東北</span>
+        <span className="area_btn" style={{...area_btn, ...area2}} data-area="2">関東</span>
+        <span className="area_btn" style={{...area_btn, ...area3}} data-area="3">中部</span>
+        <span className="area_btn" style={{...area_btn, ...area4}} data-area="4">近畿</span>
+        <span className="area_btn" style={{...area_btn, ...area5}} data-area="5">中国・四国</span>
+        <span className="area_btn" style={{...area_btn, ...area6}} data-area="6">九州・沖縄</span>
 
         <div className="area_overlay" style={Object.assign(area_overlay)}></div>
         <div className="pref_area" style={Object.assign(pref_area)}>
