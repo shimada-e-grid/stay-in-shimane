@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 import { SimpleButton, TextField } from '../'
 import useAxios from '../../hooks/useAxios'
@@ -41,7 +41,9 @@ export const RoomsIndex: React.FC = () => {
       <div className="flex">
         { data && data.map(room =>
           // TODO
-          <ApartmentCard name={room.name} price={room.price} address={room.address1 || "" + room.address2 || ""}/>
+          <Link to={`/rooms/${room.id}`}>
+            <ApartmentCard name={room.name} price={room.price} address={room.address1 || "" + room.address2 || ""}/>
+          </Link>
           ) }
       </div>
     </>
