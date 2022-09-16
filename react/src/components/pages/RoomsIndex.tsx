@@ -38,10 +38,12 @@ export const RoomsIndex: React.FC = () => {
       <TextField value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
       <SimpleButton onClick={handleOnClickSearch}>検索</SimpleButton>
       { loading && <>ローディング</> }
-      { data && data.map(room =>
-        // TODO
-        <ApartmentCard name={room.name} price={room.price} address={room.address1 || "" + room.address2 || ""}/>
-        ) }
+      <div className="flex">
+        { data && data.map(room =>
+          // TODO
+          <ApartmentCard name={room.name} price={room.price} address={room.address1 || "" + room.address2 || ""}/>
+          ) }
+      </div>
     </>
   )
 }
