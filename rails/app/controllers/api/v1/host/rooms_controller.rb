@@ -4,12 +4,11 @@ module Api
   module V1
     module Host
       class RoomsController < ApplicationController
-        before_action :set_user, only: %i[index create]
         before_action :set_room, only: %i[show update destroy]
 
         # GET /rooms
         def index
-          @rooms = @user.rooms
+          @rooms = current_api_v1_user.rooms
           render json: @rooms
         end
 
@@ -20,7 +19,7 @@ module Api
 
         # POST /rooms
         def create
-          @room = @user.rooms.new(room_params)
+          @room = current_api_v1_user.rooms.new(room_params)
 
           if @room.save
             render json: @room, status: :created, location: @room
@@ -47,12 +46,7 @@ module Api
 
         # Use callbacks to share common setup or constraints between actions.
         def set_room
-          user = User.find(1)
-          @room = user.rooms.find(params[:id])
-        end
-
-        def set_user
-          @user = User.find(1)
+          @room = current_api_v1_user.rooms.find(params[:id])
         end
 
         # Only allow a list of trusted parameters through.
