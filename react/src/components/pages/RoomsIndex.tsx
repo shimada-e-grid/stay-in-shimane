@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 import { SimpleButton, TextField } from '../'
 import useAxios from '../../hooks/useAxios'
@@ -8,6 +8,10 @@ import { ApartmentCard } from '../organisms/ApartmentCard'
 interface RoomResponse {
   id: number
   name: string
+  price: number
+  city: string
+  address1: string | null
+  address2: string | null
 }
 
 export const RoomsIndex: React.FC = () => {
@@ -34,10 +38,14 @@ export const RoomsIndex: React.FC = () => {
       <TextField value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
       <SimpleButton onClick={handleOnClickSearch}>検索</SimpleButton>
       { loading && <>ローディング</> }
-      { data && data.map(room =>
-        // TODO
-        <ApartmentCard name={room.name} price={10000} address="島根県・・・"/>
-        ) }
+      <div className="flex">
+        { data && data.map(room =>
+          // TODO
+          <Link to={`/rooms/${room.id}`}>
+            <ApartmentCard name={room.name} price={room.price} address={room.address1 || "" + room.address2 || ""}/>
+          </Link>
+          ) }
+      </div>
     </>
   )
 }
