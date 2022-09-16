@@ -8,6 +8,10 @@ import { ApartmentCard } from '../organisms/ApartmentCard'
 interface RoomResponse {
   id: number
   name: string
+  price: number
+  city: string
+  address1: string | null
+  address2: string | null
 }
 
 export const RoomsIndex: React.FC = () => {
@@ -36,7 +40,7 @@ export const RoomsIndex: React.FC = () => {
       { loading && <>ローディング</> }
       { data && data.map(room =>
         // TODO
-        <ApartmentCard name={room.name} price={10000} address="島根県・・・"/>
+        <ApartmentCard name={room.name} price={room.price} address={room.address1 || "" + room.address2 || ""}/>
         ) }
     </>
   )
