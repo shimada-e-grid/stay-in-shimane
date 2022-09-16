@@ -23,7 +23,7 @@ module Api
         if @user.save
           render json: @user, status: :created, location: @user
         else
-          render json: @user.errors, status: :unprocessable_entity
+          render json: @user.errors#, status: :unprocessable_entity
         end
       end
     
@@ -49,9 +49,10 @@ module Api
       end
     
       # Only allow a list of trusted parameters through.
+      #ストロングパラメーター
       def user_params
         #更新/取得する内容によってpermit(:)可変対応する
-        params.fetch(:user).permit(:id,:email,:password,:last_name)
+        params.require(:user).permit(:id,:email,:password,:last_name)
       end
     end
   end
