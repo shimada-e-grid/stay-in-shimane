@@ -23,6 +23,16 @@ module Api
       # POST /rooms
       def create
         @room = Room.new(room_params)
+        @room.user_id = 1
+        # @room.user_id = current_api_v1_user.id
+        @room.name_kana = "カナ"
+        @room.zip_code = "693-0011"
+        @room.prefecture = 32
+        @room.city = "33032"
+        @room.address1 = "大津"
+        @room.address2 = "0000"
+        @room.maximum_capacity = 5
+        @room.description = "説明"
 
         if @room.save
           render json: @room, status: :created, location: @room
