@@ -30,39 +30,39 @@ const area_btn: React.CSSProperties = {
 }
 
 const area1: React.CSSProperties = {
-  top: '30%',
+  top: '31%',
   right: '0',
   width: '30%'
 }
 
 const area2: React.CSSProperties = {
-  top: '58%',
-  right: '11%',
-  width: '30%'
+  top: '65%',
+  right: '12%',
+  width: '13%'
 }
 
 const area3: React.CSSProperties = {
-  top: '56%',
+  top: '62%',
   right: '27.5%',
   width: '13%'
 }
 
 const area4: React.CSSProperties = {
-  top: '65%',
-  right: '44%',
+  top: '68%',
+  right: '41%',
   width: '13%'
 }
 
 const area5: React.CSSProperties = {
-  top: '52%',
-  left: '20%',
-  width: '25%'
+  top: '66%',
+  left: '25%',
+  width: '20%'
 }
 
 const area6: React.CSSProperties = {
-  top: '70%',
-  left: '0,',
-  width: '25%'
+  top: '67%',
+  left: '1%',
+  width: '20%'
 }
 
 const area_overlay: React.CSSProperties = {
@@ -128,10 +128,8 @@ $(function(){
     $('.pref_list [data-id]').click(function(){
       if($(this).data('id')){
           var id = $(this).data('id');
-          //このidを使用して行いたい操作をしてください
-          //都道府県IDに応じて別ページに飛ばしたい場合はこんな風に書く↓
-          //window.location.href = 'https://kinocolog.com/pref/' + id;
-          
+          // 画面遷移
+          window.location.href = 'http://localhost:3001/rooms?search[prefecture]=' + id;
           prefReset();
       }
   });
