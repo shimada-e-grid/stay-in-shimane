@@ -5,10 +5,9 @@ module Api
     class RoomImagesController < ApplicationController
       def create
         # 物件 取得
-        # @room = Room.find(params[:id])
-        @room = Room.find(2)
+        @room = Room.find(params[:room_id])
         # 物件画像 登録
-        @image = @room.room_images.new(image_path: params[:image_path], room_id: 2)
+        @image = @room.room_images.new(image_path: params[:image_path], room_id: params[:room_id])
         if @image.save
           render json: { status: 200, image: @image }
         else
