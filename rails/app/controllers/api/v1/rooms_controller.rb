@@ -25,13 +25,6 @@ module Api
         @room = Room.new(room_params)
         @room.user_id = 1
         # @room.user_id = current_api_v1_user.id
-        @room.zip_code = "693-0011"
-        @room.prefecture = 32
-        @room.city = "33032"
-        @room.address1 = "address1"
-        @room.address2 = "address2"
-        @room.maximum_capacity = 40
-        @room.description = "説明"
 
         if @room.save
           render json: { status: 200, room: @room }
