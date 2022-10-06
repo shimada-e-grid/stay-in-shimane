@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, useSearchParams } from 'react-router-dom'
 
 import { SimpleButton, TextField } from '../'
 import useAxios from '../../hooks/useAxios'
@@ -16,8 +16,10 @@ interface RoomResponse {
 
 export const RoomsIndex: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>('')
+  const [searchParams] = useSearchParams();
+  const prefecture_id = searchParams.get('search[prefecture]')
   const [{ data, loading }, fetch] = useAxios<RoomResponse[]>({
-    url: `api/v1/rooms?search[prefecture]=32`,
+    url: `api/v1/rooms?search[prefecture]=${prefecture_id}`,
     method: 'get'
   });
 
