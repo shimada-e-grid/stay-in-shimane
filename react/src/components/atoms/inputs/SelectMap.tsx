@@ -4,8 +4,7 @@ const japan_map: React.CSSProperties = {
   position: 'relative',
   boxSizing: 'border-box',
   margin: '0 auto',
-  display: 'table',
-  backgroundColor: '#adf6ff'
+  display: 'table'
 }
 
 const japan_map_img: React.CSSProperties = {
@@ -26,7 +25,7 @@ const area_btn: React.CSSProperties = {
   padding: '0.2em auto',
   fontWeight: 'bold',
   textAlign: 'center',
-  whiteSpace: 'nowrap',
+  whiteSpace: 'nowrap'
 }
 
 const area1: React.CSSProperties = {
