@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { SimpleButton } from '../'
 import { TextWithLabel } from '../atoms';
+import { VacancyCalendar } from '../atoms';
 
 import useAxios from '../../hooks/useAxios'
 
@@ -57,7 +58,7 @@ export const RoomsShow: React.FC = () => {
           <TextWithLabel label="備考" value={data ? data.description : ''}/>
         </div>
         <div>
-          <p className="text-center text-5xl">カレンダー</p>
+          <VacancyCalendar />
         </div>
       </div>
     </>
