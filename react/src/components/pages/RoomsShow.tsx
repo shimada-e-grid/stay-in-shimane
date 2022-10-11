@@ -12,6 +12,8 @@ interface RoomResponse {
   city: string
   address1: string | null
   address2: string | null
+  maximum_capacity: number
+  description: string
 }
 
 export const RoomsShow: React.FC = () => {
@@ -48,6 +50,11 @@ export const RoomsShow: React.FC = () => {
         <div className="col-span-2">
           <p className="text-5xl font-semibold">詳細</p>
           <TextWithLabel label="金額" value={data ? data.price.toString() : ''}/>
+          <TextWithLabel label="場所" value={data ? `${data.city}${data.address1}${data.address2 || ''}` : ''}/>
+          {/* <TextWithLabel label="広さ" value={data ? data : ''}/> */}
+          <TextWithLabel label="人数" value={data ? data.maximum_capacity.toString() : ''}/>
+          {/* <TextWithLabel label="備品" value={data ? data.price.toString() : ''}/> */}
+          <TextWithLabel label="備考" value={data ? data.description : ''}/>
         </div>
         <div>
           <p className="text-center text-5xl">カレンダー</p>
