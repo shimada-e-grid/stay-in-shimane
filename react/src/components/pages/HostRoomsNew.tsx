@@ -17,11 +17,24 @@ export const HostRoomsNew: React.FC = () => {
   const [address2Value, setAddress2Value] = useState<string>('')
   const [maximumCapacityValue, setMaximumCapacityValue] = useState<string>('')
   const [descriptionValue, setDescriptionValue] = useState<string>('')
-  const [imagePath, setImagePath] = useState<File>()
+  const [imagePath1, setImagePath1] = useState<File>()
+  const [imagePath2, setImagePath2] = useState<File>()
+  const [imagePath3, setImagePath3] = useState<File>()
 
   const selectImage = useCallback((e: any) => {
     const selectedImage = e.target.files[0]
-    setImagePath(selectedImage)
+    const selectedImageNumber = e.target.dataset.number
+    switch (selectedImageNumber){
+      case '1':
+        setImagePath1(selectedImage)
+        break;
+      case '2':
+        setImagePath2(selectedImage)
+        break;
+      case '3':
+        setImagePath3(selectedImage)
+        break
+    }
   }, [])
 
   const createRoomData = () => {
@@ -41,13 +54,21 @@ export const HostRoomsNew: React.FC = () => {
 
   const createRoomImageData = (room_id: any) => {
     const imageData = new FormData()
-    if (!imagePath) return
-    imageData.append('image[image_path]', imagePath)
+    if (!imagePath1 || !imagePath2 || !imagePath3) return
+    imageData.append('image[image_path1]', imagePath1)
+    imageData.append('image[image_path2]', imagePath2)
+    imageData.append('image[image_path3]', imagePath3)
     imageData.append('image[room_id]', room_id)
     return imageData
   }
 
   const sendForm = async () => {
+    // 物件画像のバリデーション
+    if (!imagePath1 || !imagePath2 || !imagePath3) {
+      alert("登録する物件画像を選択してください")
+      return
+    }
+
     const config = {
       headers: {
         'content-type': 'multipart/form-data'
@@ -60,12 +81,6 @@ export const HostRoomsNew: React.FC = () => {
       'http://localhost:3000/api/v1/rooms', room_data, config
       )
     .then(response => {
-
-      // 物件画像が未登録の場合
-      if (!imagePath) {
-        navigate('/host/rooms')
-        return
-      }
 
       // 物件画像の登録
       const room_image_data = createRoomImageData(response.data.room.id)
@@ -89,7 +104,9 @@ export const HostRoomsNew: React.FC = () => {
   return (
     <>
       <p>ホスト物件新規登録</p>
-      <input type="file" onChange={(e) => selectImage(e)}/>
+      <input type="file" data-number="1" onChange={(e) => selectImage(e)}/>
+      <input type="file" data-number="2" onChange={(e) => selectImage(e)}/>
+      <input type="file" data-number="3" onChange={(e) => selectImage(e)}/>
       <TextField style={{ width: "300px", display: "block" }} value={nameValue} onChange={(e) => setNameValue(e.target.value)} placeholder={"物件名"} required/>
       <TextField style={{ width: "300px", display: "block" }} value={nameKanaValue} onChange={(e) => setNameKanaValue(e.target.value)} placeholder={"物件名(カナ)"} required/>
       <div style={{ display: "block" }}>
