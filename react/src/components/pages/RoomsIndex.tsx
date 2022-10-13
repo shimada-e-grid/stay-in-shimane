@@ -37,7 +37,7 @@ export const RoomsIndex: React.FC = () => {
       <p>物件一覧</p>
       <SimpleButton onClick={() => navigate('/rooms/1')}>物件詳細</SimpleButton>
       <SimpleButton onClick={() => navigate('/')}>トップ</SimpleButton>
-      <TextField value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+      <TextField value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="検索：施設名"/>
       <SimpleButton onClick={handleOnClickSearch}>検索</SimpleButton>
       { loading && <>ローディング</> }
       <div className="flex">
