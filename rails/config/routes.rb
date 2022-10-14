@@ -6,6 +6,7 @@ Rails.application.routes.draw do
         resources :room_calendars, only: :index
       end
       resource :status, only: :show
+      resources :room_images, only: %i[create show]
       namespace :host do
         resources :rooms
       end
