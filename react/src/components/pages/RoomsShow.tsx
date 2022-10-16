@@ -49,13 +49,23 @@ export const RoomsShow: React.FC = () => {
           </div>
         </div>
         <div className="col-span-2">
-          <p className="text-5xl font-semibold">詳細</p>
-          <TextWithLabel label="金額" value={data ? data.price.toString() : ''}/>
-          <TextWithLabel label="場所" value={data ? `${data.city}${data.address1}${data.address2 || ''}` : ''}/>
+          <div className="mb-3 text-4xl font-bold tracking-tight">
+            <span>詳細</span>
+          </div>
+          <div className="mb-3 text-xl font-normal">
+            <TextWithLabel label="金額" value={data ? data.price.toString() : ''}/>
+          </div>
+          <div className="mb-3 text-xl font-normal">
+            <TextWithLabel label="場所" value={data ? `${data.city}${data.address1}${data.address2 || ''}` : ''}/>
+          </div>
+          <div className="mb-3 text-xl font-normal">
+            <TextWithLabel label="人数" value={data ? data.maximum_capacity.toString() : ''}/>
+          </div>
+          <div className="mb-3 text-xl font-normal">
+            <TextWithLabel label="備考" value={data ? data.description : ''}/>
+          </div>
           {/* <TextWithLabel label="広さ" value={data ? data : ''}/> */}
-          <TextWithLabel label="人数" value={data ? data.maximum_capacity.toString() : ''}/>
           {/* <TextWithLabel label="備品" value={data ? data.price.toString() : ''}/> */}
-          <TextWithLabel label="備考" value={data ? data.description : ''}/>
         </div>
         <div>
           <VacancyCalendar />
