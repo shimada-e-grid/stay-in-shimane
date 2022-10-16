@@ -1,16 +1,17 @@
-import { useNavigate } from 'react-router-dom'
-import { SimpleButton } from '../'
 import { SelectMap } from '../atoms/inputs/SelectMap'
+import { ApartmentCards } from '../templates/ApartmentCards'
+import Header from '../templates/Header'
+
 
 export const Top: React.FC = () => {
-  const navigate = useNavigate()
 
   return (
     <>
-      <p>トップ</p>
-      <SimpleButton onClick={() => navigate('/rooms?search[prefecture]=32')}>物件一覧</SimpleButton>
-      <SimpleButton onClick={() => navigate('/auth/sign_in')}>サインイン</SimpleButton>
-      <SelectMap />
+      <Header />
+      <div className="flex bg-gray-50 p-5">
+        <SelectMap />
+        <ApartmentCards />
+      </div>
     </>
   )
 }

@@ -4,6 +4,7 @@ import { useNavigate, Link, useSearchParams } from 'react-router-dom'
 import { SimpleButton, TextField } from '../'
 import useAxios from '../../hooks/useAxios'
 import { ApartmentCard } from '../organisms/ApartmentCard'
+import Header from '../templates/Header'
 
 interface RoomResponse {
   id: number
@@ -34,13 +35,14 @@ export const RoomsIndex: React.FC = () => {
 
   return (
     <>
-      <p>物件一覧</p>
-      <SimpleButton onClick={() => navigate('/rooms/1')}>物件詳細</SimpleButton>
-      <SimpleButton onClick={() => navigate('/')}>トップ</SimpleButton>
-      <TextField value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
-      <SimpleButton onClick={handleOnClickSearch}>検索</SimpleButton>
+      <Header />
+      {/* <p>物件一覧</p> */}
+      <div className="flex search-field p-4 bg-gray-50">
+        <TextField placeholder="物件名を入力してください" className="m-1 w-4/5 max-w-2xl" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+        <SimpleButton className="ml-10 mr-auto" onClick={handleOnClickSearch}>検索</SimpleButton>
+      </div>
       { loading && <>ローディング</> }
-      <div className="flex">
+      <div className="flex p-4 bg-gray-50">
         { data && data.map(room =>
           // TODO
           <Link to={`/rooms/${room.id}`}>
