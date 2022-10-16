@@ -19,7 +19,7 @@ export const ApartmentCard: React.FC<Props> = (props: Props) => {
                     <TextWithLabel label="名前"　value={props.name}/>
                 </div>
                 <div className="mb-3 font-normal">
-                    <TextWithLabel label="値段"　value={props.price.toString()}/>
+                    <TextWithLabel label="値段"　value={`¥${props.price.toString()}`}/>
                 </div>
                 <div className="mb-3 font-normal">
                     <TextWithLabel label="場所"　value={props.address}/>

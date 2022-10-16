@@ -53,7 +53,7 @@ export const RoomsShow: React.FC = () => {
             <span>詳細</span>
           </div>
           <div className="mb-3 text-xl font-normal">
-            <TextWithLabel label="金額" value={data ? data.price.toString() : ''}/>
+            <TextWithLabel label="金額" value={data ? `¥${data.price.toString()}` : ''}/>
           </div>
           <div className="mb-3 text-xl font-normal">
             <TextWithLabel label="場所" value={data ? `${data.city}${data.address1}${data.address2 || ''}` : ''}/>
