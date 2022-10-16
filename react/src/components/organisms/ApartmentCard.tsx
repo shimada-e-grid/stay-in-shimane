@@ -13,7 +13,7 @@ export const ApartmentCard: React.FC<Props> = (props: Props) => {
     const navigate = useNavigate()
     
     return (
-        <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
+        <div className="max-w-sm w-64 bg-white rounded-lg border border-gray-200 shadow-md">
             <img className="rounded-t-lg h-32 w-full object-cover" src={`/exterior/ex_${props.id}.jpg`} />
             <div className="p-5">
                 <div className="mb-2 text-2xl font-bold">

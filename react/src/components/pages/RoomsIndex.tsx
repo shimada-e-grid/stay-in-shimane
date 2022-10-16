@@ -40,7 +40,7 @@ export const RoomsIndex: React.FC = () => {
       <TextField value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="検索：施設名"/>
       <SimpleButton onClick={handleOnClickSearch}>検索</SimpleButton>
       { loading && <>ローディング</> }
-      <div className="flex gap-2">
+      <div className="flex justify-between gap-4 w-full flex-wrap">
         { data && data.map(room =>
           // TODO
           <Link to={`/rooms/${room.id}`}>
