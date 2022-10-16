@@ -40,12 +40,13 @@ export const RoomsShow: React.FC = () => {
       <SimpleButton onClick={() => navigate('/rooms')}>物件一覧</SimpleButton>
       <div className="grid grid-cols-3 gap-4">
         <div className="col-span-2 row-span-2">
-          <img className="rounded-lg w-full object-cover" src="https://placehold.jp/30/dd6699/ffffff/400x150.png?text=物件画像メイン" />
+          <img className="rounded-lg w-full h-96 object-cover" src={data ? `/exterior/ex_${data.id}.jpg` : ''} />
         </div>
         <div>
-          <div className="grid grid-rows-2 gap-4">
-            <img className="rounded-lg w-full object-cover" src="https://placehold.jp/30/dd6699/ffffff/400x150.png?text=物件画像2" />
-            <img className="rounded-lg w-full object-cover" src="https://placehold.jp/30/dd6699/ffffff/400x150.png?text=物件画像3" />
+          <div className="grid grid-rows-2 gap-8">
+            <img className="rounded-lg w-full h-44 object-cover" src={data ? `/interior/it_${data.id * 2 - 1}.jpg` : ''} />
+            {/* <img className="rounded-lg w-full h-44 object-cover" src="https://placehold.jp/30/afafb0/ffffff/400x150.png?text=No Image" /> */}
+            <img className="rounded-lg w-full h-44 object-cover" src={data ? `/interior/it_${data.id * 2}.jpg` : ''} />
           </div>
         </div>
         <div className="col-span-2">

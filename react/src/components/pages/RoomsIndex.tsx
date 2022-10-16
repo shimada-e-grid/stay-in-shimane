@@ -44,7 +44,7 @@ export const RoomsIndex: React.FC = () => {
         { data && data.map(room =>
           // TODO
           <Link to={`/rooms/${room.id}`}>
-            <ApartmentCard name={room.name} price={room.price} address={room.address1 || "" + room.address2 || ""}/>
+            <ApartmentCard id={room.id} name={room.name} price={room.price} address={room.address1 || "" + room.address2 || ""}/>
           </Link>
           ) }
       </div>
