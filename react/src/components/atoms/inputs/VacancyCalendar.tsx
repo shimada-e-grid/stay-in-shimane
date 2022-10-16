@@ -19,7 +19,7 @@ export const VacancyCalendar: React.FC = () => {
         <FullCalendar
         plugins={[ dayGridPlugin ]}
         initialView="dayGridMonth"
-        weekends={false}
+        weekends={true}
         events={
             data?.map(e => {return {
                 title: 'Reserved',
