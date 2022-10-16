@@ -8,6 +8,8 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     ports:
       - ${MYSQL_HOST_PORT}:3306
+    volumes:
+      - ./mysql/db:/var/lib/mysql
 
   rails:
     build:

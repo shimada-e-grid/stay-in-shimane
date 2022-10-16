@@ -23,11 +23,13 @@ module Api
       # POST /rooms
       def create
         @room = Room.new(room_params)
+        @room.user_id = 1
+        # @room.user_id = current_api_v1_user.id
 
         if @room.save
-          render json: @room, status: :created, location: @room
+          render json: { status: 200, room: @room }
         else
-          render json: @room.errors, status: :unprocessable_entity
+          render json: { status: 500 }
         end
       end
 

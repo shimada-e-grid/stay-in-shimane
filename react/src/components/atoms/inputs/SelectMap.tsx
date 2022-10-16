@@ -3,7 +3,8 @@ import $ from 'jquery';
 const japan_map: React.CSSProperties = {
   position: 'relative',
   boxSizing: 'border-box',
-  display: 'table'
+  display: 'table',
+  height: '100%'
 }
 
 const japan_map_img: React.CSSProperties = {

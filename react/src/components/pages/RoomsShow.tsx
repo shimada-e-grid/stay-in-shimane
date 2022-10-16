@@ -40,22 +40,33 @@ export const RoomsShow: React.FC = () => {
       <SimpleButton onClick={() => navigate('/rooms')}>物件一覧</SimpleButton>
       <div className="grid grid-cols-3 gap-4">
         <div className="col-span-2 row-span-2">
-          <img className="rounded-lg w-full object-cover" src="https://placehold.jp/30/dd6699/ffffff/400x150.png?text=物件画像メイン" />
+          <img className="rounded-lg w-full h-96 object-cover" src={data ? `/exterior/ex_${data.id}.jpg` : ''} />
         </div>
         <div>
-          <div className="grid grid-rows-2 gap-4">
-            <img className="rounded-lg w-full object-cover" src="https://placehold.jp/30/dd6699/ffffff/400x150.png?text=物件画像2" />
-            <img className="rounded-lg w-full object-cover" src="https://placehold.jp/30/dd6699/ffffff/400x150.png?text=物件画像3" />
+          <div className="grid grid-rows-2 gap-8">
+            <img className="rounded-lg w-full h-44 object-cover" src={data ? `/interior/it_${data.id * 2 - 1}.jpg` : ''} />
+            {/* <img className="rounded-lg w-full h-44 object-cover" src="https://placehold.jp/30/afafb0/ffffff/400x150.png?text=No Image" /> */}
+            <img className="rounded-lg w-full h-44 object-cover" src={data ? `/interior/it_${data.id * 2}.jpg` : ''} />
           </div>
         </div>
         <div className="col-span-2">
-          <p className="text-5xl font-semibold">詳細</p>
-          <TextWithLabel label="金額" value={data ? data.price.toString() : ''}/>
-          <TextWithLabel label="場所" value={data ? `${data.city}${data.address1}${data.address2 || ''}` : ''}/>
+          <div className="mb-3 text-4xl font-bold tracking-tight">
+            <span>詳細</span>
+          </div>
+          <div className="mb-3 text-xl font-normal">
+            <TextWithLabel label="金額" value={data ? `¥${data.price.toString()}` : ''}/>
+          </div>
+          <div className="mb-3 text-xl font-normal">
+            <TextWithLabel label="場所" value={data ? `${data.city}${data.address1}${data.address2 || ''}` : ''}/>
+          </div>
+          <div className="mb-3 text-xl font-normal">
+            <TextWithLabel label="人数" value={data ? data.maximum_capacity.toString() : ''}/>
+          </div>
+          <div className="mb-3 text-xl font-normal">
+            <TextWithLabel label="備考" value={data ? data.description : ''}/>
+          </div>
           {/* <TextWithLabel label="広さ" value={data ? data : ''}/> */}
-          <TextWithLabel label="人数" value={data ? data.maximum_capacity.toString() : ''}/>
           {/* <TextWithLabel label="備品" value={data ? data.price.toString() : ''}/> */}
-          <TextWithLabel label="備考" value={data ? data.description : ''}/>
         </div>
         <div>
           <VacancyCalendar />

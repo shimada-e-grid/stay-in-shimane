@@ -42,12 +42,14 @@ export const RoomsIndex: React.FC = () => {
         <SimpleButton className="ml-10 mr-auto" onClick={handleOnClickSearch}>検索</SimpleButton>
       </div>
       { loading && <>ローディング</> }
-      <div className="flex p-4 bg-gray-50">
+      <div className="flex p-4 bg-gray-50 flex-wrap">
         { data && data.map(room =>
           // TODO
-          <Link to={`/rooms/${room.id}`}>
-            <ApartmentCard name={room.name} price={room.price} address={room.address1 || "" + room.address2 || ""}/>
-          </Link>
+          <div className="m-2">
+            <Link to={`/rooms/${room.id}`}>
+              <ApartmentCard id={room.id} name={room.name} price={room.price} address={room.address1 || "" + room.address2 || ""}/>
+            </Link>
+          </div>
           ) }
       </div>
     </>

@@ -1,0 +1,1 @@
+CREATE DATABASE IF NOT EXISTS stay_in_shimane_development

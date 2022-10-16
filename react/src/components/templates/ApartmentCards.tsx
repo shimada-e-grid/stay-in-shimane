@@ -22,12 +22,14 @@ export const ApartmentCards: React.FC = () => {
   return (
     <>
       { loading && <>ローディング</> }
-      <div className="flex m-4">
+      <div className="flex m-4 flex-wrap w-3/5">
         { data && data.map(room =>
           // TODO
-          <Link to={`/rooms/${room.id}`}>
-            <ApartmentCard name={room.name} price={room.price} address={room.address1 || "" + room.address2 || ""}/>
-          </Link>
+          <div className="m-2">
+            <Link to={`/rooms/${room.id}`}>
+              <ApartmentCard id={room.id} name={room.name} price={room.price} address={room.address1 || "" + room.address2 || ""}/>
+            </Link>
+          </div>
           ) }
       </div>
     </>
