@@ -3,8 +3,8 @@ import $ from 'jquery';
 const japan_map: React.CSSProperties = {
   position: 'relative',
   boxSizing: 'border-box',
-  margin: '0 auto',
-  display: 'table'
+  display: 'table',
+  height: '100%'
 }
 
 const japan_map_img: React.CSSProperties = {
@@ -94,13 +94,12 @@ const pref_list: React.CSSProperties = {
   display: '-webkit-flex flex',
   WebkitFlexWrap: 'wrap',
   flexWrap: 'wrap',
-  width: '90%',
+  width: '50%',
   backgroundColor: '#FFF'
 }
 
 const div: React.CSSProperties = {
   boxSizing: 'border-box',
-  width: '50%',
   border: '1px solid #CCC',
   fontWeight: 'bold',
   textAlign: 'center',
@@ -145,7 +144,7 @@ $(function(){
 export const SelectMap: React.FC = () => {
   return(
     <>
-      <div className="japan_map" style={Object.assign(japan_map)}>
+      <div className="japan_map m-4" style={Object.assign(japan_map)}>
         <img src="./map_of_japan.png" alt="日本地図" style={japan_map_img}></img>
         <span className="area_btn" style={{...area_btn, ...area1}} data-area="1">北海道・東北</span>
         <span className="area_btn" style={{...area_btn, ...area2}} data-area="2">関東</span>
